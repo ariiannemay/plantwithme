@@ -8,30 +8,56 @@
     <link rel="icon" type="image/png" href="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
-    <!-- Header / Navbar -->
+    <!-- Header / Navbar with Tabs -->
     <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 shrink-0">
+            <!-- Brand / Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer shrink-0" onclick="location.href='index.html'">
                 <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="PlantWithMe Icon" class="w-11 h-11 rounded-xl object-cover shadow-lg shadow-emerald-900/40">
                 <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
                     PlantWithMe
                 </span>
-            </a>
+            </div>
 
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-                <a href="index.html" class="hover:text-emerald-400 transition">Home</a>
-                <a href="trees.html" class="text-emerald-400 font-semibold transition pb-1 border-b-2 border-emerald-400">Tree Library</a>
-                <a href="https://discord.gg/studywithme" target="_blank" class="hover:text-emerald-400 transition">Support Server</a>
+            <!-- Desktop Navigation Tabs -->
+            <nav class="hidden xl:flex items-center space-x-5 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Welcome / Info</a>
+                <a href="guide.html" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Complete Guide</a>
+                <a href="trees.html" class="text-emerald-400 font-semibold transition pb-1 border-b-2 border-emerald-400 whitespace-nowrap">Tree Library</a>
+                <a href="tos.html" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Terms of Service</a>
+                <a href="privacy.html" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Privacy Policy</a>
+                <a href="changelog.html" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Change Log</a>
+                <a href="contact.html" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Contact Us</a>
             </nav>
 
-            <div class="flex items-center space-x-3">
+            <!-- CTA Buttons -->
+            <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+                <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3 py-2 rounded-lg text-xs sm:text-sm transition shadow-md shadow-indigo-950/30 flex items-center space-x-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                    <span>Vote Top.gg</span>
+                </a>
                 <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-lg text-xs sm:text-sm transition shadow-md shadow-emerald-900/30 whitespace-nowrap">
                     Add to Discord
                 </a>
             </div>
+        </div>
+
+        <!-- Mobile & Tablet Horizontal Scroll Nav bar -->
+        <div class="flex xl:hidden overflow-x-auto px-4 py-2.5 bg-slate-900/95 border-t border-slate-800 space-x-6 text-xs font-medium text-slate-300 whitespace-nowrap scrollbar-none">
+            <a href="index.html">Welcome</a>
+            <a href="guide.html">Guide</a>
+            <a href="trees.html" class="text-emerald-400 font-bold">Tree Library</a>
+            <a href="tos.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="changelog.html">Change Log</a>
+            <a href="contact.html">Contact Us</a>
         </div>
     </header>
 
@@ -45,12 +71,20 @@
             <h2 class="text-3xl sm:text-4xl font-black text-white">Forest App Available Trees Library</h2>
             <p class="text-slate-400 mt-2 max-w-xl mx-auto">Browse through all available species, anniversary cakes, cactuses, and premium event trees supported by PlantWithMe.</p>
             
-            <div class="mt-8 max-w-md mx-auto relative">
+            <!-- Tree Counter Badge -->
+            <div class="mt-4 inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs text-slate-300 shadow-inner">
+                <i class="fa-solid fa-tree text-emerald-400"></i>
+                <span>Total Available Trees: <strong id="treeCounter" class="text-emerald-300 font-bold">0</strong></span>
+            </div>
+
+            <!-- Search & Filter Bar -->
+            <div class="mt-6 max-w-md mx-auto relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
                 <input type="text" id="treeSearch" placeholder="Search tree name (e.g. Wisteria, Sakura)..." onkeyup="filterTrees()" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-12 pr-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 shadow-inner">
             </div>
         </div>
 
+        <!-- Tree Grid Container -->
         <div id="treeGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
 
         <!-- Independent Disclaimer Note -->
@@ -84,6 +118,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript for Tree Library and Counter -->
     <script>
         const treeData = {
             "10th Anniversary Cake Tree": "https://i.postimg.cc/G4WLFDmT/10th-Anniversary-Cake-Tree.png",
@@ -269,10 +304,16 @@
 
         function renderTrees(filter = '') {
             const grid = document.getElementById('treeGrid');
+            const counter = document.getElementById('treeCounter');
             if (!grid) return;
             grid.innerHTML = '';
+            
             const entries = Object.entries(treeData);
             const filtered = entries.filter(([name]) => name.toLowerCase().includes(filter.toLowerCase()));
+
+            if (counter) {
+                counter.innerText = filtered.length;
+            }
 
             if (filtered.length === 0) {
                 grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500">No trees found matching your search.</div>`;
@@ -311,7 +352,7 @@
             document.getElementById('imageModal').classList.add('hidden');
         }
 
-        // Render trees on load for trees.html
+        // Initialize tree grid and counter on load
         renderTrees();
     </script>
 </body>

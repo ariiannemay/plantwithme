@@ -39,12 +39,16 @@
         </div>
     </header>
 
-    <!-- Content -->
-    <main class="py-12 px-6 max-w-5xl mx-auto space-y-16">
+    <!-- FULL-WIDTH CROP BANNER (v2) -->
+    <div class="w-full bg-slate-900 border-b border-slate-800 shadow-2xl overflow-hidden mb-12">
+        <div class="w-full">
+            <img src="https://i.postimg.cc/J4bpQYKP/Forest-Session-App-Banner-v2.png" alt="PlantWithMe Banner v2" class="w-full h-auto object-cover max-h-[350px] sm:max-h-[450px]">
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <main class="py-6 px-6 max-w-5xl mx-auto space-y-12">
         <div class="text-center relative z-10">
-            <div class="flex justify-center mb-6">
-                <img src="https://i.postimg.cc/vmwPbHCp/Forest-Session-App-Banner-Updated.png" alt="PlantWithMe Banner" class="max-w-full h-auto rounded-2xl shadow-2xl border border-emerald-900/50 max-h-72 object-cover">
-            </div>
             <span class="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-6">
                 <img src="https://i.postimg.cc/50NQg7wt/studywithme.png" alt="StudyWithMe Icon" class="w-4 h-4 rounded-full object-cover">
                 <span>The Ultimate Discord Companion for Forest App Users</span>
@@ -52,9 +56,19 @@
             <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
                 Focus, plant trees, and grow <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">together</span> in Discord.
             </h1>
-            <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-                Prefix commands have been removed and automatic host link detection is no longer supported. The Bot operates exclusively via Discord's slash command interface.
-            </p>
+
+            <!-- Note Cloud Latest Update Box -->
+            <div class="bg-slate-900 border border-emerald-500/30 rounded-2xl p-5 mb-10 max-w-3xl mx-auto text-left shadow-lg relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono px-3 py-1 rounded-bl-xl border-l border-b border-emerald-500/20">Latest Update • October 20, 2026</div>
+                <h4 class="text-emerald-400 font-bold text-sm mb-2 flex items-center space-x-2">
+                    <i class="fa-solid fa-cloud-bolt"></i>
+                    <span>Important System Notice</span>
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Prefix commands have been removed and automatic host link detection is no longer supported. The Bot operates exclusively via Discord's slash command interface. Server administrators and moderators should regularly use <code class="text-emerald-300 font-mono">/data export</code> and <code class="text-emerald-300 font-mono">/data import</code> as a best practice to back up runtime data.
+                </p>
+            </div>
+
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-emerald-900/50 flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-discord text-lg"></i><span>Add PlantWithMe</span>
@@ -65,13 +79,18 @@
             </div>
         </div>
 
-        <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
-            <img src="https://i.postimg.cc/1tfVdDJz/studywithme-server-header.png" alt="StudyWithMe Community Header" class="w-full h-48 sm:h-64 object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-6 sm:p-8">
+        <!-- Fully Appreciated Uncut StudyWithMe Server Banner -->
+        <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative my-12 bg-slate-900">
+            <img src="https://i.postimg.cc/1tfVdDJz/studywithme-server-header.png" alt="StudyWithMe Community Header" class="w-full h-auto max-h-[400px] object-contain mx-auto">
+            <div class="p-6 bg-slate-900 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-800">
                 <div>
                     <a href="https://discord.gg/studywithme" target="_blank" class="text-xs uppercase tracking-widest text-emerald-400 font-bold hover:underline">STUDY WITH ME DISCORD SERVER</a>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Built for Study, Focus, Accountability & Wellness</h3>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1">Built for Study, Focus, Accountability & Wellness</h3>
                 </div>
+                <a href="https://discord.gg/studywithme" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition shrink-0 flex items-center space-x-2">
+                    <i class="fa-brands fa-discord"></i>
+                    <span>Join Server</span>
+                </a>
             </div>
         </div>
 
@@ -80,7 +99,7 @@
                 <i class="fa-solid fa-circle-info text-emerald-400"></i><span>Bot's General Information & Purpose</span>
             </h2>
             <p class="text-slate-300 text-sm leading-relaxed">
-                The PlantWithMe Bot is designed to make Forest App sessions easier to share, manage, and track inside Discord communities[cite: 4]. It helps users host focus sessions, invite others to join, keep track of active plant timers, and view finished-session stats and leaderboards[cite: 4].
+                The PlantWithMe Bot is designed to make Forest App sessions easier to share, manage, and track inside Discord communities. It helps users host focus sessions, invite others to join, keep track of active plant timers, and view finished-session stats and leaderboards.
             </p>
         </div>
 
@@ -89,7 +108,7 @@
         </div>
     </main>
 
-    <footer class="bg-slate-900 border-t border-slate-800 py-10 px-6 text-center text-sm text-slate-400">
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 px-6 text-center text-sm text-slate-400 mt-16">
         <span class="text-white font-bold">PlantWithMe — The Ultimate Discord Companion for Forest App Users</span>
     </footer>
 </body>

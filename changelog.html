@@ -8,11 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 shrink-0">
-                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Icon" class="w-11 h-11 rounded-xl object-cover">
+                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Icon" class="w-11 h-11 rounded-xl object-cover shadow-lg shadow-emerald-900/40">
                 <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">PlantWithMe</span>
             </a>
             <nav class="hidden xl:flex items-center space-x-5 text-sm font-medium text-slate-300">
@@ -24,23 +26,68 @@
                 <a href="changelog.html" class="text-emerald-400 font-semibold pb-1 border-b-2 border-emerald-400">Change Log</a>
                 <a href="contact.html" class="hover:text-emerald-400 transition">Contact Us</a>
             </nav>
-            <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 text-white font-semibold px-3 py-2 rounded-lg text-sm">Add to Discord</a>
+            <div class="flex items-center space-x-3">
+                <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-lg text-sm transition">Add to Discord</a>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-12 px-6 max-w-4xl mx-auto space-y-8 text-sm text-slate-300">
         <div class="border-b border-slate-800 pb-6">
             <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Updates & Version History</span>
             <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Change Log & Future Updates</h2>
             <p class="text-slate-400 text-xs mt-2">LAST UPDATED: OCTOBER 20, 2026</p>
         </div>
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3">
-            <h3 class="text-lg font-bold text-white">October 20, 2026 Release</h3>
-            <p>Prefix commands have been removed and automatic host link detection is no longer supported.</p>
+
+        <div class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white">October 20, 2026 Release</h3>
+                    <span class="bg-emerald-950 text-emerald-300 text-xs px-2.5 py-1 rounded-full font-mono">Current Version</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-2">Prefix commands have been removed and automatic host link detection is no longer supported. The Bot may allow authorized users to export and import operational Bot data. Server administrators and moderators should regularly use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code> as a best practice to back up runtime data in case the Bot is updated, restarted, or redeployed.</p>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                    <li><strong>Architecture & Prefix Removal:</strong> Completely removed all legacy prefix commands (p. commands) and automatic message-parsing features across the entire bot codebase and documentation. Disabled automatic chat-based Forest link detection to prevent inaccurate timers and reliance on Message Content Intent restrictions.</li>
+                    <li><strong>Host & Image Enhancements:</strong> Enhanced <code class="text-emerald-300">/plant image</code> so users can save a default host image that automatically applies whenever they host a session, complete with an image preview feature. Added the admin-level <code class="text-emerald-300">/assign plant image</code> command to assign default host images for other users. Refined image override logic: specifying an explicit image_url parameter in <code class="text-emerald-300">/host</code> overrides the user's saved default image, while omitting images entirely prevents broken embeds.</li>
+                    <li><strong>Stats & Leaderboard Redesign:</strong> Redesigned plant stats embeds to feature the user's avatar as a thumbnail and display their saved plant image as the main banner embed. Maintained compact, paginated layouts for stats and leaderboards to ensure stability within Discord embed size limits. Integrated history modifications allowing moderators to edit or delete existing finished logs via <code class="text-emerald-300">/assign plant modify</code>.</li>
+                    <li><strong>Data Management Updates:</strong> Updated <code class="text-emerald-300">/data summary</code>, <code class="text-emerald-300">/data export</code>, and <code class="text-emerald-300">/data import</code> commands to provide public responses instead of ephemeral ones, including full preservation of user image preferences.</li>
+                    <li><strong>Help & Documentation Overhaul:</strong> Updated the public <code class="text-emerald-300">/help</code> panels and comprehensive guide manuals to reflect exclusive slash-command usage, removing all references to prefix commands or text-matching workflows. Completely rewrote and updated the Privacy Policy and Terms of Service drafts.</li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
+                <h3 class="text-lg font-bold text-white">April 26, 2025 Release</h3>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                    <li>Added <code class="text-emerald-300">/plant image</code> for saving default host images.</li>
+                    <li>Added <code class="text-emerald-300">/assign plant image</code> allowing admins to assign default host images for other users.</li>
+                    <li>Added <code class="text-emerald-300">/assign plant modify</code> allowing moderators to edit or delete existing finished plant logs.</li>
+                    <li>Added <code class="text-emerald-300">p.lb</code> as a new prefix alias for <code class="text-emerald-300">p.leaderboard</code>.</li>
+                    <li>Improved timer and host synchronization so <code class="text-emerald-300">p.edit</code> and <code class="text-emerald-300">/plant edit</code> update original host embeds when the session came from a tracked host post.</li>
+                    <li>Updated duration validation limits: minimum plant duration is 10 minutes and maximum is 180 minutes across timers, host flows, request durations, assigned timers, and stats.</li>
+                    <li>Updated <code class="text-emerald-300">/status</code> no-active footer to suggest <code class="text-emerald-300">/plant start</code> and <code class="text-emerald-300">/host</code>.</li>
+                    <li>Plant image preferences are now fully included in <code class="text-emerald-300">/data summary</code>, <code class="text-emerald-300">/data export</code>, and <code class="text-emerald-300">/data import</code>.</li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-900/60 border border-slate-800/80 p-6 rounded-2xl space-y-3 shadow-lg">
+                <h3 class="text-lg font-bold text-emerald-400">Future Roadmap & Planned Features</h3>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                    <li>Auto-assign image URLs that apply automatically on every host command with image preview verification.</li>
+                    <li>Dedicated HTML website enhancements for advanced community documentation hosting.</li>
+                </ul>
+            </div>
         </div>
+
+        <!-- Independent Disclaimer Note -->
         <div class="pt-12 border-t border-slate-900 text-center">
             <p class="text-xs text-slate-500">PlantWithMe is an independent, community-built Discord bot and is not officially affiliated with, endorsed by, or connected to the official Forest App team.</p>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 px-6 text-center text-sm text-slate-400">
+        <span class="text-white font-bold">PlantWithMe — The Ultimate Discord Companion for Forest App Users</span>
+    </footer>
 </body>
 </html>

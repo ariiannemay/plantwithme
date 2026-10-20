@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlantWithMe — Forest App Sessions & Tree Library</title>
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png">
+    <title>PlantWithMe — The Ultimate Discord Companion for Forest App Users</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,340 +20,299 @@
         .tab-content.active {
             display: block;
         }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="PlantWithMe Icon" class="w-10 h-10 rounded-xl object-cover shadow-lg shadow-emerald-900/40">
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer shrink-0" onclick="switchTab('welcome')">
+                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="PlantWithMe Icon" class="w-11 h-11 rounded-xl object-cover shadow-lg shadow-emerald-900/40">
                 <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
                     PlantWithMe
                 </span>
             </div>
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-                <button onclick="switchTab('overview')" id="nav-overview" class="text-emerald-400 font-semibold transition pb-1 border-b-2 border-emerald-400">Overview</button>
-                <button onclick="switchTab('trees')" id="nav-trees" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent">Forest Tree Library</button>
-                <a href="#commands" onclick="switchTab('overview')" class="hover:text-emerald-400 transition">Slash Commands</a>
-                <a href="#setup" onclick="switchTab('overview')" class="hover:text-emerald-400 transition">Setup Guide</a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden xl:flex items-center space-x-5 text-sm font-medium text-slate-300">
+                <button onclick="switchTab('welcome')" id="nav-welcome" class="text-emerald-400 font-semibold transition pb-1 border-b-2 border-emerald-400 whitespace-nowrap">Welcome / Info</button>
+                <button onclick="switchTab('guide')" id="nav-guide" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Complete Guide</button>
+                <button onclick="switchTab('trees')" id="nav-trees" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Tree Library</button>
+                <button onclick="switchTab('tos')" id="nav-tos" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Terms of Service</button>
+                <button onclick="switchTab('privacy')" id="nav-privacy" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Privacy Policy</button>
+                <button onclick="switchTab('changelog')" id="nav-changelog" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Change Log</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="hover:text-emerald-400 transition pb-1 border-b-2 border-transparent whitespace-nowrap">Contact Us</button>
             </nav>
-            <div class="flex items-center space-x-3">
-                <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg text-sm transition shadow-md shadow-indigo-950/30 flex items-center space-x-2">
+
+            <!-- CTA Buttons -->
+            <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+                <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3 py-2 rounded-lg text-xs sm:text-sm transition shadow-md shadow-indigo-950/30 flex items-center space-x-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-check-to-slot"></i>
-                    <span>Vote on Top.gg</span>
+                    <span>Vote Top.gg</span>
                 </a>
-                <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2 rounded-lg text-sm transition shadow-md shadow-emerald-900/30">
+                <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-lg text-xs sm:text-sm transition shadow-md shadow-emerald-900/30 whitespace-nowrap">
                     Add to Discord
                 </a>
             </div>
         </div>
+
+        <!-- Mobile & Tablet Horizontal Scroll Nav bar -->
+        <div class="flex xl:hidden overflow-x-auto px-4 py-2.5 bg-slate-900/95 border-t border-slate-800 space-x-6 text-xs font-medium text-slate-300 whitespace-nowrap scrollbar-none">
+            <button onclick="switchTab('welcome')" id="m-nav-welcome" class="text-emerald-400 font-bold">Welcome</button>
+            <button onclick="switchTab('guide')" id="m-nav-guide">Guide</button>
+            <button onclick="switchTab('trees')" id="m-nav-trees">Tree Library</button>
+            <button onclick="switchTab('tos')" id="m-nav-tos">Terms of Service</button>
+            <button onclick="switchTab('privacy')" id="m-nav-privacy">Privacy Policy</button>
+            <button onclick="switchTab('changelog')" id="m-nav-changelog">Change Log</button>
+            <button onclick="switchTab('contact')" id="m-nav-contact">Contact Us</button>
+        </div>
     </header>
 
-    <!-- TAB 1: OVERVIEW & DOCUMENTATION -->
-    <main id="tab-overview" class="tab-content active">
+    <!-- ================= TAB 1: WELCOME / INFO ================= -->
+    <main id="tab-welcome" class="tab-content active py-12 px-6 max-w-5xl mx-auto space-y-16">
         <!-- Hero Section -->
-        <section class="relative py-20 px-6 overflow-hidden">
-            <div class="max-w-5xl mx-auto text-center relative z-10">
-                <div class="flex justify-center mb-6">
-                    <img src="https://i.postimg.cc/vmwPbHCp/Forest-Session-App-Banner-Updated.png" alt="PlantWithMe Banner" class="max-w-full h-auto rounded-2xl shadow-2xl border border-emerald-900/50 max-h-64 object-cover">
+        <div class="text-center relative z-10">
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/vmwPbHCp/Forest-Session-App-Banner-Updated.png" alt="PlantWithMe Banner" class="max-w-full h-auto rounded-2xl shadow-2xl border border-emerald-900/50 max-h-72 object-cover">
+            </div>
+            <span class="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-6">
+                <img src="https://i.postimg.cc/50NQg7wt/studywithme.png" alt="StudyWithMe Icon" class="w-4 h-4 rounded-full object-cover">
+                <span>The Ultimate Discord Companion for Forest App Users</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+                Focus, plant trees, and grow <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">together</span> in Discord.
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                Prefix commands have been removed and automatic host link detection is no longer supported. The Bot operates exclusively via Discord's slash command interface.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-emerald-900/50 flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-discord text-lg"></i>
+                    <span>Add PlantWithMe</span>
+                </a>
+                <button onclick="switchTab('guide')" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold px-8 py-3 rounded-xl transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-book-open text-emerald-400"></i>
+                    <span>Read Complete Guide</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Community Server Banner -->
+        <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
+            <img src="https://i.postimg.cc/1tfVdDJz/studywithme-server-header.png" alt="StudyWithMe Community Header" class="w-full h-48 sm:h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-6 sm:p-8">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">DISCORD.GG/STUDYWITHME</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Built for Study, Focus, Accountability & Wellness</h3>
                 </div>
-                <span class="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-6">
-                    <img src="https://i.postimg.cc/50NQg7wt/studywithme.png" alt="StudyWithMe Icon" class="w-4 h-4 rounded-full object-cover">
-                    <span>The Ultimate Discord Companion for Forest App Users</span>
-                </span>
-                <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
-                    Focus, plant trees, and grow <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">together</span> in Discord.
-                </h1>
-                <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-                    Seamlessly host Forest sessions, track active timers, subscribe to host pings, request specific tree species, and explore our comprehensive tree library.
+            </div>
+        </div>
+
+        <!-- General Info & Purpose Collapsible -->
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <h2 class="text-2xl font-bold text-white flex items-center space-x-3">
+                <i class="fa-solid fa-circle-info text-emerald-400"></i>
+                <span>Bot's General Information & Purpose</span>
+            </h2>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                The PlantWithMe Bot is designed to make Forest App sessions easier to share, manage, and track inside Discord communities. It helps users host focus sessions, invite others to join, keep track of active plant timers, and view finished-session stats and leaderboards. Its main purpose is to make Forest-based coworking and productivity sessions feel more natural inside Discord, especially in study, focus, accountability, and wellness communities.
+            </p>
+
+            <details class="group bg-slate-950 border border-slate-800 rounded-xl p-4 cursor-pointer">
+                <summary class="flex justify-between items-center font-semibold text-emerald-400 text-sm">
+                    <span>Why was the bot created? (Click to expand)</span>
+                    <i class="fa-solid fa-chevron-down transition group-open:rotate-180"></i>
+                </summary>
+                <div class="mt-4 text-sm text-slate-300 space-y-3 pt-3 border-t border-slate-800/80">
+                    <p>The bot was created to bridge the gap between Forest App and Discord. Without the bot, sharing Forest sessions manually can be repetitive and messy. Users often need to copy session details, explain start times, send room codes, and reformat everything themselves. The PlantWithMe Bot automates that process by turning Forest session data into clear Discord embeds and timer tools.</p>
+                    <p class="font-semibold text-white">This makes it easier to:</p>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                        <li>host Forest sessions</li>
+                        <li>invite others to join</li>
+                        <li>track active plants</li>
+                        <li>get notified when specific users host</li>
+                        <li>request specific trees or durations</li>
+                        <li>view long-term planting stats and leaderboards</li>
+                    </ul>
+                    <p class="text-slate-400 italic">The goal is to make collaborative focus sessions smoother, more organized, and more engaging.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- Core Features Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-emerald-400 font-bold text-lg mb-3 flex items-center space-x-2">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Forest Session Hosting (/host)</span>
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Users can manually run <code class="text-emerald-300 font-mono">/host</code> and provide their Forest session details using interactive parameters. Automatically formats session duration, tree name, start/end times, room codes, optional remarks, and interactive join buttons.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-emerald-900/50 flex items-center justify-center space-x-2">
-                        <i class="fa-brands fa-discord text-lg"></i>
-                        <span>Add PlantWithMe</span>
-                    </a>
-                    <button onclick="switchTab('trees')" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-emerald-500/40 text-emerald-300 font-semibold px-8 py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow-lg">
-                        <i class="fa-solid fa-tree text-lg"></i>
-                        <span>Browse Tree Library</span>
-                    </button>
-                </div>
             </div>
-        </section>
-
-        <!-- Community Server Header Banner Section -->
-        <section class="py-8 px-6 max-w-6xl mx-auto">
-            <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
-                <img src="https://i.postimg.cc/1tfVdDJz/studywithme-server-header.png" alt="StudyWithMe Community Header" class="w-full h-48 sm:h-72 object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-6 sm:p-8">
-                    <div>
-                        <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Trusted Community Integration</span>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Built for Serious Study & Coworking Guilds</h3>
-                    </div>
-                </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-emerald-400 font-bold text-lg mb-3 flex items-center space-x-2">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <span>Plant Timers (/plant)</span>
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Track Forest timers directly. Manually start (10 to 180 mins), edit active or pending timers, stop timers, or check server status for yourself and other members.
+                </p>
             </div>
-        </section>
-
-        <!-- Interactive Discord Chat & Hosting Animation Preview -->
-        <section id="animation-demo" class="py-16 px-6 bg-slate-900/50 border-y border-slate-800/80">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-10">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">See How It Works in Chat</h2>
-                    <p class="text-slate-400 text-sm">Experience an exact simulation of the exact <code class="text-emerald-400">/host</code> command layout with room codes, timer stats, and interactive action buttons.</p>
-                </div>
-
-                <!-- Discord Mockup Window matching exact user screenshot reference -->
-                <div class="discord-mockup bg-[#313338] rounded-2xl shadow-2xl overflow-hidden border border-slate-700/60 font-sans">
-                    <!-- Discord Header Bar -->
-                    <div class="bg-[#2b2d31] px-4 py-3 flex items-center justify-between border-b border-slate-700/40 text-xs text-slate-400">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-slate-300 font-bold"><i class="fa-solid fa-hashtag text-slate-500 mr-1"></i> forest</span>
-                            <span class="text-slate-500">|</span>
-                            <span>Get notifs by getting the 🌱 role in </span>
-                            <span class="bg-[#383a40] px-2 py-0.5 rounded text-indigo-300 text-[11px]"><i class="fa-solid fa-layer-group"></i> Channels & Roles</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-bell hover:text-white cursor-pointer"></i>
-                            <i class="fa-solid fa-thumbtack hover:text-white cursor-pointer"></i>
-                            <i class="fa-solid fa-users hover:text-white cursor-pointer"></i>
-                        </div>
-                    </div>
-
-                    <!-- Chat Feed Simulation -->
-                    <div class="p-6 space-y-6 text-sm">
-                        <!-- User command input -->
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center font-bold text-white shrink-0 overflow-hidden">
-                                <img src="https://i.postimg.cc/50NQg7wt/studywithme.png" alt="User Avatar" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="font-semibold text-pink-300">amethyst, cpa</span>
-                                    <span class="bg-slate-700 text-slate-300 text-[10px] px-1 rounded">⚙️ SWM</span>
-                                    <span class="text-xs text-slate-400">used</span>
-                                    <span class="bg-[#5865F2]/30 text-indigo-300 px-1.5 py-0.5 rounded text-xs font-mono"><i class="fa-solid fa-terminal text-[10px] mr-1"></i>host</span>
-                                </div>
-                                <div class="text-slate-300 text-xs mt-1 bg-[#2b2d31] p-2.5 rounded-md border border-slate-700/50 max-w-lg leading-relaxed">
-                                    <span class="text-emerald-400 font-semibold">/host</span> event_message: Time to put down your phone and get back to work! Enter my room code: <strong class="text-white">4J7KGTCG</strong> to plant a 90-minute Wisteria with me! You can also tap on this link to join me: https://forestapp.cc/join-room?token=4J7KGTCG starting_in: <strong class="text-amber-400">6</strong>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bot Response Message -->
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-bold text-white shrink-0 shadow-md overflow-hidden">
-                                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Bot Icon" class="w-full h-full object-cover">
-                            </div>
-                            <div class="w-full">
-                                <div class="flex items-center space-x-2">
-                                    <span class="font-semibold text-emerald-400">plantwithme</span>
-                                    <span class="bg-[#5865F2] text-white text-[10px] font-bold px-1 py-0.2 rounded flex items-center gap-1"><i class="fa-solid fa-check text-[9px]"></i> APP</span>
-                                    <span class="text-xs text-slate-400">Today at 10:54 AM</span>
-                                </div>
-
-                                <!-- Discord Embed Box -->
-                                <div class="mt-2 bg-[#2b2d31] border-l-4 border-emerald-500 rounded-r-lg p-4 max-w-xl shadow-xl space-y-3 relative">
-                                    <!-- Tree image floating top-right -->
-                                    <div class="absolute right-4 top-4 w-20 h-20 bg-slate-950/60 rounded-xl p-1 border border-slate-700/40 flex items-center justify-center">
-                                        <img src="https://i.postimg.cc/S23b4FY2/Wisteria.png" alt="Wisteria Tree" class="max-h-full max-w-full object-contain">
-                                    </div>
-
-                                    <div class="font-extrabold text-white text-base pr-20">
-                                        90-minute Wisteria
-                                    </div>
-
-                                    <div class="space-y-1.5 text-xs text-slate-300 pr-16">
-                                        <div class="flex items-center space-x-2">
-                                            <span>🌱</span> <span class="text-slate-400">Hosted by:</span> <span class="bg-[#404249] px-2 py-0.5 rounded text-pink-300 font-medium">@amethyst, cpa ⚙️</span>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span>⏱️</span> <span class="text-slate-400">Starting:</span> <span class="text-white font-medium">45 minutes ago</span> <span class="text-slate-400">(11:00 AM)</span>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span>⏳</span> <span class="text-slate-400">Duration:</span> <span class="text-white font-medium">90 minutes</span> <span class="text-slate-400">(ends 12:30 PM)</span>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span>🚪</span> <span class="text-slate-400">Room Code:</span> <code class="bg-[#1e1f22] text-emerald-300 font-mono px-2 py-0.5 rounded font-bold tracking-wider border border-slate-700">4J7KGTCG</code>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2 text-xs text-slate-300 flex items-center space-x-1.5 font-medium">
-                                        <i class="fa-solid fa-link text-slate-400"></i>
-                                        <span>Join me by tapping below!</span>
-                                    </div>
-
-                                    <div class="text-[11px] text-slate-500 pt-1 border-t border-slate-700/50">
-                                        • Sent October 20, 2026 at 10:54 AM
-                                    </div>
-
-                                    <!-- Embedded Banner Preview Image -->
-                                    <div class="rounded-lg overflow-hidden border border-slate-700/60 mt-2 bg-slate-950">
-                                        <img src="https://i.postimg.cc/vmwPbHCp/Forest-Session-App-Banner-Updated.png" alt="Session Banner" class="w-full h-40 object-cover opacity-90">
-                                    </div>
-                                </div>
-
-                                <!-- Discord Action Buttons -->
-                                <div class="mt-3 flex flex-wrap gap-2">
-                                    <button class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-xs font-semibold px-4 py-2 rounded-md transition flex items-center space-x-2 shadow">
-                                        <i class="fa-solid fa-key text-amber-400"></i>
-                                        <span>Copy Room Code</span>
-                                    </button>
-                                    <button class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-xs font-semibold px-4 py-2 rounded-md transition flex items-center space-x-2 shadow">
-                                        <i class="fa-solid fa-seedling text-emerald-400"></i>
-                                        <span>Join Session</span>
-                                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Chat Input Simulated Bar -->
-                    <div class="bg-[#383a40] p-4 mx-4 mb-4 rounded-lg flex items-center justify-between text-slate-400">
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-circle-plus text-slate-400 bg-slate-600 rounded-full p-1.5 text-xs text-white"></i>
-                            <span class="text-xs text-slate-300 font-mono">Message #forest</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-slate-400">
-                            <i class="fa-solid fa-gift"></i>
-                            <i class="fa-solid fa-note-sticky"></i>
-                            <i class="fa-solid fa-face-smile"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-emerald-400 font-bold text-lg mb-3 flex items-center space-x-2">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Stats & Leaderboards</span>
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Track completed sessions with <code class="text-emerald-300 font-mono">/plant stats</code> and <code class="text-emerald-300 font-mono">/plant leaderboard</code> across all, today, week, and month timeframes for hosts and tree types.
+                </p>
             </div>
-        </section>
-
-        <!-- Core Features Section -->
-        <section id="features" class="py-20 px-6 max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Complete Feature Suite</h2>
-                <p class="text-slate-400 max-w-xl mx-auto">Everything you need to run structured study groups, accountability circles, and co-working spaces.</p>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-emerald-400 font-bold text-lg mb-3 flex items-center space-x-2">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Requests & Subscriptions</span>
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Request specific trees/durations to trigger automatic pings, or subscribe to specific hosts so you get notified instantly whenever they host a new session.
+                </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-sm hover:border-emerald-500/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-stopwatch"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Flexible Timers</h3>
-                    <p class="text-sm text-slate-400">Start manual sessions or hosted groups ranging from 10 minutes up to 180 minutes with autocomplete tree selection.</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-sm hover:border-emerald-500/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-bell"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Subscriptions & Requests</h3>
-                    <p class="text-sm text-slate-400">Subscribe to specific hosts to receive automatic role pings, or request exact tree types and optional durations.</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-sm hover:border-emerald-500/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Stats & Leaderboards</h3>
-                    <p class="text-sm text-slate-400">Track naturally completed sessions, view paginated leaderboards, and monitor stats across daily, weekly, and monthly timeframes.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slash Commands Reference -->
-        <section id="commands" class="py-20 px-6 bg-slate-900/30 border-t border-slate-800/80">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-white mb-4">Slash Command Reference</h2>
-                    <p class="text-slate-400">The bot operates exclusively via clean Discord slash commands and interactive modals.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-                        <h3 class="text-emerald-400 font-bold mb-4 flex items-center space-x-2">
-                            <i class="fa-solid fa-terminal"></i>
-                            <span>Core & Hosting Commands</span>
-                        </h3>
-                        <ul class="space-y-3 text-sm">
-                            <li><code class="text-emerald-300 font-mono">/host</code> — Primary command to start a guided Forest hosting session with room codes and banners.</li>
-                            <li><code class="text-emerald-300 font-mono">/trees</code> & <code class="text-emerald-300 font-mono">/show_tree</code> — Browse available tree species and view artwork.</li>
-                            <li><code class="text-emerald-300 font-mono">/version</code> — Shows current bot version timestamp.</li>
-                            <li><code class="text-emerald-300 font-mono">/help</code> — Displays the interactive paginated help panel.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-                        <h3 class="text-emerald-400 font-bold mb-4 flex items-center space-x-2">
-                            <i class="fa-solid fa-seedling"></i>
-                            <span>Plant & Timer Controls</span>
-                        </h3>
-                        <ul class="space-y-3 text-sm">
-                            <li><code class="text-emerald-300 font-mono">/plant start mins: tree:</code> — Create a 10–180 minute focus timer.</li>
-                            <li><code class="text-emerald-300 font-mono">/plant edit</code> — Edit your latest active or pending timer.</li>
-                            <li><code class="text-emerald-300 font-mono">/plant stop</code> — Stop an active timer (stopped timers do not count toward stats).</li>
-                            <li><code class="text-emerald-300 font-mono">/plant status</code> — View active timers for yourself or other members.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-                        <h3 class="text-emerald-400 font-bold mb-4 flex items-center space-x-2">
-                            <i class="fa-solid fa-users"></i>
-                            <span>Community & Tracking</span>
-                        </h3>
-                        <ul class="space-y-3 text-sm">
-                            <li><code class="text-emerald-300 font-mono">/plant leaderboard</code> — View paginated host or tree leaderboards.</li>
-                            <li><code class="text-emerald-300 font-mono">/plant stats</code> — Inspect summary stats and recent completed sessions.</li>
-                            <li><code class="text-emerald-300 font-mono">/plant subscribe</code> — Subscribe to host pings for specific users.</li>
-                            <li><code class="text-emerald-300 font-mono">/plant request add</code> — Request specific trees and durations.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-                        <h3 class="text-emerald-400 font-bold mb-4 flex items-center space-x-2">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>Moderator & Admin Tools</span>
-                        </h3>
-                        <ul class="space-y-3 text-sm">
-                            <li><code class="text-emerald-300 font-mono">/assign plant stats</code> — Add a finished session log for any user.</li>
-                            <li><code class="text-emerald-300 font-mono">/assign plant modify</code> — Edit or delete existing session logs.</li>
-                            <li><code class="text-emerald-300 font-mono">/data export</code> / <code class="text-emerald-300 font-mono">import</code> — Backup or restore runtime JSON data.</li>
-                            <li><code class="text-emerald-300 font-mono">/plant reset</code> — Reset finished-session statistics by scope.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Setup Checklist Section -->
-        <section id="setup" class="py-20 px-6 max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Quick Setup Checklist</h2>
-                <p class="text-slate-400">Get PlantWithMe up and running in your Discord server in under 2 minutes.</p>
-            </div>
-
-            <div class="space-y-4">
-                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex items-start space-x-4">
-                    <div class="w-8 h-8 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold shrink-0">1</div>
-                    <div>
-                        <h4 class="font-bold text-white">Invite the Bot</h4>
-                        <p class="text-sm text-slate-400 mt-1">Invite the bot with <code class="text-emerald-300">Bot</code> and <code class="text-emerald-300">applications.commands</code> scopes.</p>
-                    </div>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex items-start space-x-4">
-                    <div class="w-8 h-8 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold shrink-0">2</div>
-                    <div>
-                        <h4 class="font-bold text-white">Configure Role Permissions</h4>
-                        <p class="text-sm text-slate-400 mt-1">Ensure the bot role has View Channels, Send Messages, Embed Links, Read Message History, and Mention Roles permission.</p>
-                    </div>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex items-start space-x-4">
-                    <div class="w-8 h-8 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold shrink-0">3</div>
-                    <div>
-                        <h4 class="font-bold text-white">Enable Gateway Intents</h4>
-                        <p class="text-sm text-slate-400 mt-1">Enable Server Members and Message Content intents in the Discord Developer Portal, then restart the bot.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <!-- TAB 2: DEDICATED FOREST TREE LIBRARY -->
+    <!-- ================= TAB 2: COMPLETE GUIDE ================= -->
+    <main id="tab-guide" class="tab-content py-12 px-6 max-w-4xl mx-auto space-y-8">
+        <div class="border-b border-slate-800 pb-6">
+            <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Full Owner & User Reference Manual</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">PlantWithMe Bot Complete Guide</h2>
+            <p class="text-slate-400 text-sm mt-2">LAST UPDATED: OCTOBER 20, 2026</p>
+        </div>
+
+        <div class="space-y-4">
+            <details class="group bg-slate-900 border border-slate-800 rounded-xl p-5 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-white text-base">
+                    <span>1. Setup Checklist & Bot Role Permissions</span>
+                    <i class="fa-solid fa-chevron-down transition group-open:rotate-180 text-emerald-400"></i>
+                </summary>
+                <div class="mt-4 text-sm text-slate-300 space-y-4 pt-4 border-t border-slate-800">
+                    <h4 class="font-semibold text-emerald-300">Setup Steps:</h4>
+                    <ol class="list-decimal pl-5 space-y-2">
+                        <li>Invite the bot with <code class="text-emerald-300">Bot</code> and <code class="text-emerald-300">applications.commands</code> scopes.</li>
+                        <li>Give the bot a server role with the permissions listed below.</li>
+                        <li>Make sure the bot can see and send messages in channels where you want to use it.</li>
+                        <li>If you want voice support, allow the bot to view and connect to voice channels.</li>
+                        <li>If you want role pings, make sure the bot role is allowed to mention roles and sits high enough in the role list.</li>
+                        <li>Restart the bot after changing intents in the Developer Portal.</li>
+                    </ol>
+
+                    <h4 class="font-semibold text-emerald-300 pt-2">Recommended Permissions:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Core:</strong> View Channels, Send Messages, Embed Links, Attach Files, Read Message History</li>
+                        <li><strong>Mentions:</strong> Mention @everyone, @here, and All Roles</li>
+                        <li><strong>Cleanup:</strong> Manage Messages</li>
+                        <li><strong>Voice:</strong> View Voice Channels, Connect</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="group bg-slate-900 border border-slate-800 rounded-xl p-5 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-white text-base">
+                    <span>2. Global Rules and Limits</span>
+                    <i class="fa-solid fa-chevron-down transition group-open:rotate-180 text-emerald-400"></i>
+                </summary>
+                <div class="mt-4 text-sm text-slate-300 space-y-3 pt-4 border-t border-slate-800">
+                    <p><strong>Duration Limits:</strong> Minimum plant duration is 10 minutes; maximum is 180 minutes.</p>
+                    <p><strong>Stats & Leaderboard Recording:</strong> Only naturally finished timers count toward finished-session history.</p>
+                    <p><strong>Server Scope:</strong> Plant status selection is server-scoped.</p>
+                    <p><strong>Help Visibility:</strong> Public help intentionally hides mod/admin/owner tools.</p>
+                </div>
+            </details>
+
+            <details class="group bg-slate-900 border border-slate-800 rounded-xl p-5 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-white text-base">
+                    <span>3. Accepted Input Formats</span>
+                    <i class="fa-solid fa-chevron-down transition group-open:rotate-180 text-emerald-400"></i>
+                </summary>
+                <div class="mt-4 text-sm text-slate-300 space-y-3 pt-4 border-t border-slate-800">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>User Inputs:</strong> Accept <code class="text-emerald-300">@mention</code>, raw user IDs, usernames, or display names.</li>
+                        <li><strong>Leaderboard Modes:</strong> <code class="text-emerald-300">host</code> or <code class="text-emerald-300">tree</code></li>
+                        <li><strong>Timeframes:</strong> <code class="text-emerald-300">all</code>, <code class="text-emerald-300">today</code>, <code class="text-emerald-300">week</code>, <code class="text-emerald-300">month</code></li>
+                        <li><strong>Date Formats:</strong> <code class="text-emerald-300">2026-04-26 18:30</code>, <code class="text-emerald-300">04/26/2026 18:30</code>, or <code class="text-emerald-300">April 26, 2026 6:30 PM</code></li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="group bg-slate-900 border border-slate-800 rounded-xl p-5 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-white text-base">
+                    <span>4. Complete Slash Command Reference</span>
+                    <i class="fa-solid fa-chevron-down transition group-open:rotate-180 text-emerald-400"></i>
+                </summary>
+                <div class="mt-4 text-sm text-slate-300 space-y-4 pt-4 border-t border-slate-800">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
+                            <h5 class="text-emerald-400 font-bold mb-2">Core Commands</h5>
+                            <ul class="space-y-1 font-mono text-xs">
+                                <li>/version — Shows running version timestamp</li>
+                                <li>/help — Paginated help panel</li>
+                                <li>/host — Primary hosting interface</li>
+                                <li>/trees — Paginated tree list</li>
+                                <li>/show_tree — View selected tree image</li>
+                                <li>/random_tree — Random tree image</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
+                            <h5 class="text-emerald-400 font-bold mb-2">Plant Commands</h5>
+                            <ul class="space-y-1 font-mono text-xs">
+                                <li>/plant start — Manual timer</li>
+                                <li>/plant edit — Edit active timer</li>
+                                <li>/plant stop — Stop active timer</li>
+                                <li>/plant status — View timer status</li>
+                                <li>/plant image — Set default host image</li>
+                                <li>/plant leaderboard — Host/tree ranks</li>
+                                <li>/plant stats — View user statistics</li>
+                                <li>/plant subscribe / unsubscribe</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
+                        <h5 class="text-emerald-400 font-bold mb-2">Admin & Moderator Assign Commands</h5>
+                        <ul class="space-y-1 font-mono text-xs">
+                            <li>/assign plant request — Admin create request</li>
+                            <li>/assign plant timer — Admin create active timer</li>
+                            <li>/assign plant stats — Mod add finished plant log</li>
+                            <li>/assign plant modify — Mod edit/delete logs</li>
+                            <li>/assign plant image — Admin set default image for user</li>
+                            <li>/assign plant subscription — Mod manage subscriptions</li>
+                            <li>/data summary, export, import — Admin data backups</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <details class="group bg-slate-900 border border-slate-800 rounded-xl p-5 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-white text-base">
+                    <span>5. Troubleshooting & FAQ</span>
+                    <i class="fa-solid fa-chevron-down transition group-open:rotate-180 text-emerald-400"></i>
+                </summary>
+                <div class="mt-4 text-sm text-slate-300 space-y-3 pt-4 border-t border-slate-800">
+                    <p><strong>User lookup problems:</strong> Ensure Server Members Intent is enabled in the Developer Portal and restart.</p>
+                    <p><strong>Host embed did not update after edit:</strong> Very old host posts created before message tracking cannot be linked.</p>
+                    <p><strong>Why did data disappear after restart?</strong> In-memory state clears unless administrators use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code>.</p>
+                </div>
+            </details>
+        </div>
+    </main>
+
+    <!-- ================= TAB 3: TREE LIBRARY ================= -->
     <main id="tab-trees" class="tab-content py-12 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-10">
             <span class="inline-flex items-center space-x-2 bg-emerald-950 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-3">
@@ -364,17 +322,13 @@
             <h2 class="text-3xl sm:text-4xl font-black text-white">Forest App Available Trees Library</h2>
             <p class="text-slate-400 mt-2 max-w-xl mx-auto">Browse through all available species, anniversary cakes, cactuses, and premium event trees supported by PlantWithMe.</p>
             
-            <!-- Search & Filter Bar -->
             <div class="mt-8 max-w-md mx-auto relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
                 <input type="text" id="treeSearch" placeholder="Search tree name (e.g. Wisteria, Sakura)..." onkeyup="filterTrees()" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-12 pr-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 shadow-inner">
             </div>
         </div>
 
-        <!-- Tree Grid Container -->
-        <div id="treeGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            <!-- Populated dynamically via script below -->
-        </div>
+        <div id="treeGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
     </main>
 
     <!-- Full View Image Modal -->
@@ -391,22 +345,153 @@
         </div>
     </div>
 
+    <!-- ================= TAB 4: TERMS OF SERVICE ================= -->
+    <main id="tab-tos" class="tab-content py-12 px-6 max-w-4xl mx-auto space-y-6 text-sm text-slate-300 leading-relaxed">
+        <div class="border-b border-slate-800 pb-6">
+            <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Legal Agreement</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Terms of Service</h2>
+            <p class="text-slate-400 text-xs mt-2">Effective Date: April 26, 2026 | LAST UPDATED: OCTOBER 20, 2026</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs text-slate-300 mb-6">
+            Prefix commands have been removed and automatic host link detection is no longer supported. The Bot may allow authorized users to export and import operational Bot data. Server administrators and moderators should regularly use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code> as a best practice to back up runtime data in case the Bot is updated, restarted, or redeployed.
+        </div>
+
+        <h3 class="text-lg font-bold text-white pt-2">1. Use of the Bot</h3>
+        <p>PlantWithMe Bot is provided for Discord community use via Discord's slash command interface, including hosting Forest sessions, managing plant timers, creating requests and subscriptions, and using related moderation and admin tools.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">2. Compliance with Discord Rules</h3>
+        <p>You must comply with Discord’s Terms of Service, Community Guidelines, applicable server rules, and local laws.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">3. Prohibited Conduct</h3>
+        <p>You may not use the Bot to violate laws, harass others, spam commands, intentionally disrupt performance, abuse export/import or moderation tools, attempt unauthorized access, or engage in fraudulent activity.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">4. Server Admin and Moderator Responsibility</h3>
+        <p>If you are a server owner, admin, or moderator using elevated features, you are fully responsible for how you use them and for storing exported data securely.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">5. Service Availability and Disclaimer of Warranties</h3>
+        <p>The Bot is provided on an "as is" and "as available" basis without warranties of any kind. Use the Bot at your own risk.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">6. Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law, the developer of PlantWithMe Bot will not be liable for any direct, indirect, incidental, special, consequential, or punitive damages resulting from use of or inability to use the Bot.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">7. Contact Information</h3>
+        <p>Support Server: <a href="https://discord.gg/studywithme" target="_blank" class="text-emerald-400 underline">discord.gg/studywithme</a> (tag @missattycpa)<br>Developer Contact: @missattycpa<br>Support/Donations: <a href="https://ko-fi.com/missattycpa" target="_blank" class="text-emerald-400 underline">ko-fi.com/missattycpa</a></p>
+    </main>
+
+    <!-- ================= TAB 5: PRIVACY POLICY ================= -->
+    <main id="tab-privacy" class="tab-content py-12 px-6 max-w-4xl mx-auto space-y-6 text-sm text-slate-300 leading-relaxed">
+        <div class="border-b border-slate-800 pb-6">
+            <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Data Practices & User Privacy</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Privacy Policy</h2>
+            <p class="text-slate-400 text-xs mt-2">Effective Date: April 26, 2026 | LAST UPDATED: OCTOBER 20, 2026</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs text-slate-300 mb-6">
+            Prefix commands have been removed and automatic host link detection is no longer supported. The Bot may allow authorized users to export and import operational Bot data. Server administrators and moderators should regularly use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code> as a best practice to back up runtime data in case the Bot is updated, restarted, or redeployed.
+        </div>
+
+        <h3 class="text-lg font-bold text-white pt-2">1. Information the Bot Processes</h3>
+        <p>The Bot may process and store Discord user IDs, server IDs, channel IDs, message IDs, role IDs, user-provided command data, Forest session data, and finished session history.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">2. How the Information Is Used</h3>
+        <p>The Bot uses this information exclusively to operate Discord features: creating timers, generating embeds, sending pings, tracking finished sessions, displaying stats, and enabling data export/import.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">3. Data Storage, Retention & Sharing</h3>
+        <p>Operational data remains stored until manually removed, overwritten, or cleared. The Bot does not sell user data. Exported files may be accessed by authorized server administrators.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">4. User Choices and Rights</h3>
+        <p>Users may request correction or deletion of stored personal items by contacting server staff or the developer.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">5. Contact Information</h3>
+        <p>Support Server: <a href="https://discord.gg/studywithme" target="_blank" class="text-emerald-400 underline">discord.gg/studywithme</a> (tag @missattycpa)<br>Developer Contact: @missattycpa<br>Support/Donations: <a href="https://ko-fi.com/missattycpa" target="_blank" class="text-emerald-400 underline">ko-fi.com/missattycpa</a></p>
+    </main>
+
+    <!-- ================= TAB 6: CHANGE LOG ================= -->
+    <main id="tab-changelog" class="tab-content py-12 px-6 max-w-4xl mx-auto space-y-8 text-sm text-slate-300">
+        <div class="border-b border-slate-800 pb-6">
+            <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Updates & Version History</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Change Log & Future Updates</h2>
+            <p class="text-slate-400 text-xs mt-2">LAST UPDATED: OCTOBER 20, 2026</p>
+        </div>
+
+        <div class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white">October 20, 2026 Release</h3>
+                    <span class="bg-emerald-950 text-emerald-300 text-xs px-2.5 py-1 rounded-full font-mono">Current Version</span>
+                </div>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                    <li><strong>Prefix Removal:</strong> Completely removed all legacy prefix commands (p. commands) and automatic message-parsing features across the entire bot codebase.</li>
+                    <li><strong>Host & Image Enhancements:</strong> Enhanced <code class="text-emerald-300">/plant image</code> so users can save a default host image with instant preview, and added admin-level <code class="text-emerald-300">/assign plant image</code>.</li>
+                    <li><strong>Stats & Leaderboard Redesign:</strong> Plant stats embeds now feature user avatars as thumbnails and display saved plant images as banner embeds.</li>
+                    <li><strong>Data Management Updates:</strong> <code class="text-emerald-300">/data summary</code>, <code class="text-emerald-300">/data export</code>, and <code class="text-emerald-300">/data import</code> now provide public responses preserving user image preferences.</li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3">
+                <h3 class="text-lg font-bold text-white">April 26, 2025 Release</h3>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                    <li>Added <code class="text-emerald-300">/plant image</code> and <code class="text-emerald-300">/assign plant image</code>.</li>
+                    <li>Added <code class="text-emerald-300">/assign plant modify</code> for editing or deleting existing finished plant logs.</li>
+                    <li>Improved timer and host synchronization so <code class="text-emerald-300">/plant edit</code> updates original host embeds.</li>
+                    <li>Updated duration validation limits (10 to 180 minutes).</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================= TAB 7: CONTACT US ================= -->
+    <main id="tab-contact" class="tab-content py-12 px-6 max-w-4xl mx-auto space-y-8">
+        <div class="border-b border-slate-800 pb-6 text-center">
+            <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Support & Developer</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Contact Us</h2>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 shadow-2xl">
+            <div class="shrink-0">
+                <img src="https://i.postimg.cc/BvQcpLFK/missattycpa-icon.jpg" alt="missattycpa Icon" class="w-40 h-40 rounded-full object-cover border-4 border-emerald-500 shadow-xl shadow-emerald-950">
+            </div>
+            <div class="space-y-4 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 bg-emerald-950 text-emerald-300 text-xs px-3 py-1 rounded-full font-mono">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Developer & Creator: @missattycpa</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Get in Touch & Support Development</h3>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Have questions, feedback, or need help with PlantWithMe Bot? Reach out through our official support server or support the development via Ko-fi!
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+                    <a href="https://discord.gg/studywithme" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition flex items-center space-x-2 shadow-lg">
+                        <i class="fa-brands fa-discord"></i>
+                        <span>Support Server (discord.gg/studywithme)</span>
+                    </a>
+                    <a href="https://ko-fi.com/missattycpa" target="_blank" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center space-x-2 shadow-lg">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        <span>Support on Ko-fi</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <!-- Footer -->
     <footer class="bg-slate-900 border-t border-slate-800 py-10 px-6 text-center text-sm text-slate-400">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Footer Logo" class="w-8 h-8 rounded-lg object-cover">
-                <span class="text-white font-bold">PlantWithMe Bot Guide & Documentation</span>
+                <span class="text-white font-bold">PlantWithMe — The Ultimate Discord Companion for Forest App Users</span>
             </div>
-            <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-6 text-xs">
                 <a href="https://top.gg/bot/1387792853236842576" target="_blank" class="hover:text-emerald-400 transition">Top.gg Voting</a>
-                <a href="https://ko-fi.com" target="_blank" class="hover:text-emerald-400 transition">Support on Ko-fi</a>
+                <a href="https://ko-fi.com/missattycpa" target="_blank" class="hover:text-emerald-400 transition">Ko-fi Donation</a>
+                <a href="https://discord.gg/studywithme" target="_blank" class="hover:text-emerald-400 transition">Support Server</a>
             </div>
-            <p>Designed for study and co-working communities worldwide.</p>
+            <p class="text-xs">Designed for study and co-working communities worldwide.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Tab Switching and Tree Library Rendering -->
+    <!-- JavaScript for Tabs and Tree Library -->
     <script>
         const treeData = {
             "10th Anniversary Cake Tree": "https://i.postimg.cc/G4WLFDmT/10th-Anniversary-Cake-Tree.png",
@@ -471,7 +556,7 @@
             "Hyacinth": "https://i.postimg.cc/CnGk00rm/Hyacinth.png",
             "Iris": "https://i.postimg.cc/CZ5GqWdx/Iris.png",
             "Jacaranda Fairy": "https://i.postimg.cc/3w7ZjqvR/Jacaranda-Fairy.png",
-            "Jacaranda": "https://i.postimg.cc/cL7RJcbN/Jacaranda.png",
+            "Jacaranda": "https://i.postimg.cc/X7N0TMBB/Jacaranda.png",
             "Juliet": "https://i.postimg.cc/7Y1g1Nyg/Juliet.png",
             "Kitty": "https://i.postimg.cc/c6GL09DV/Kitty.png",
             "Lantern Flower": "https://i.postimg.cc/56mLkxCt/Lantern-Flower.png",
@@ -493,7 +578,7 @@
             "Mushroom": "https://i.postimg.cc/PPfQHphD/Mushroom.png",
             "Narcissus": "https://i.postimg.cc/zyVwLsyX/Narcissus.png",
             "Nest": "https://i.postimg.cc/j2FycbSy/Nest.png",
-            "Oak Tree": "https://i.postimg.cc/K4XBXQYP/Oak-Tree.webp",
+            "Oak Tree": "https://i.postimg.cc/cCXPsHtg/Oak-Tree.png",
             "Octopus": "https://i.postimg.cc/bDj1Bd3s/Octopus.png",
             "Osmanthus": "https://i.postimg.cc/w7bLdwwK/Osmanthus.png",
             "Pear Tree House": "https://i.postimg.cc/ZBF6tZMj/Pear-Tree-House.png",
@@ -549,7 +634,7 @@
             "Azalea": "https://i.postimg.cc/YS3hfXJN/Azalea.png",
             "Chinese Rose": "https://i.postimg.cc/HkbJjWzh/Chinese-Rose.png",
             "Flaming Katy": "https://i.postimg.cc/3rb0ccWn/Flaming-Katy.png",
-            "Incurved": "https://i.postimg.cc/28sbzLQW/Incurved.png",
+            <variable name="Incurved" value="https://i.postimg.cc/28sbzLQW/Incurved.png">
             "Red Spider Lily": "https://i.postimg.cc/c4gtyBnZ/Red-Spider-Lily.png",
             "Staghorn Fern": "https://i.postimg.cc/JhmsXwd4/Staghorn-Fern.png",
             "Venus Flytrap": "https://i.postimg.cc/Rh83JN2j/Venus-Flytrap.png",
@@ -590,20 +675,40 @@
             "Rose of Sharon": "https://i.postimg.cc/6qgQ32Gm/Rose-of-Sharon.webp"
         };
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-' + tabId).classList.add('active');
+        const tabs = ['welcome', 'guide', 'trees', 'tos', 'privacy', 'changelog', 'contact'];
 
-            if (tabId === 'overview') {
-                document.getElementById('nav-overview').classList.add('text-emerald-400', 'border-emerald-400');
-                document.getElementById('nav-overview').classList.remove('text-slate-300', 'border-transparent');
-                document.getElementById('nav-trees').classList.remove('text-emerald-400', 'border-emerald-400');
-                document.getElementById('nav-trees').classList.add('text-slate-300', 'border-transparent');
-            } else {
-                document.getElementById('nav-trees').classList.add('text-emerald-400', 'border-emerald-400');
-                document.getElementById('nav-trees').classList.remove('text-slate-300', 'border-transparent');
-                document.getElementById('nav-overview').classList.remove('text-emerald-400', 'border-emerald-400');
-                document.getElementById('nav-overview').classList.add('text-slate-300', 'border-transparent');
+        function switchTab(tabId) {
+            tabs.forEach(t => {
+                const content = document.getElementById('tab-' + t);
+                if (content) content.classList.remove('active');
+                
+                const navBtn = document.getElementById('nav-' + t);
+                if (navBtn) {
+                    navBtn.classList.remove('text-emerald-400', 'border-emerald-400');
+                    navBtn.classList.add('text-slate-300', 'border-transparent');
+                }
+                const mNavBtn = document.getElementById('m-nav-' + t);
+                if (mNavBtn) {
+                    mNavBtn.classList.remove('text-emerald-400', 'font-bold');
+                    mNavBtn.classList.add('text-slate-300');
+                }
+            });
+
+            const activeContent = document.getElementById('tab-' + tabId);
+            if (activeContent) activeContent.classList.add('active');
+
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeNav) {
+                activeNav.classList.add('text-emerald-400', 'border-emerald-400');
+                activeNav.classList.remove('text-slate-300', 'border-transparent');
+            }
+            const activeMNav = document.getElementById('m-nav-' + tabId);
+            if (activeMNav) {
+                activeMNav.classList.add('text-emerald-400', 'font-bold');
+                activeMNav.classList.remove('text-slate-300');
+            }
+
+            if (tabId === 'trees') {
                 renderTrees();
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -611,6 +716,7 @@
 
         function renderTrees(filter = '') {
             const grid = document.getElementById('treeGrid');
+            if (!grid) return;
             grid.innerHTML = '';
             
             const entries = Object.entries(treeData);
@@ -653,6 +759,5 @@
             document.getElementById('imageModal').classList.add('hidden');
         }
     </script>
-
 </body>
 </html>

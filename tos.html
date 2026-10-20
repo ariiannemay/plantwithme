@@ -8,11 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 shrink-0">
-                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Icon" class="w-11 h-11 rounded-xl object-cover">
+                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Icon" class="w-11 h-11 rounded-xl object-cover shadow-lg shadow-emerald-900/40">
                 <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">PlantWithMe</span>
             </a>
             <nav class="hidden xl:flex items-center space-x-5 text-sm font-medium text-slate-300">
@@ -24,20 +26,71 @@
                 <a href="changelog.html" class="hover:text-emerald-400 transition">Change Log</a>
                 <a href="contact.html" class="hover:text-emerald-400 transition">Contact Us</a>
             </nav>
-            <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 text-white font-semibold px-3 py-2 rounded-lg text-sm">Add to Discord</a>
+            <div class="flex items-center space-x-3">
+                <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-lg text-sm transition">Add to Discord</a>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-12 px-6 max-w-4xl mx-auto space-y-6 text-sm text-slate-300 leading-relaxed">
         <div class="border-b border-slate-800 pb-6">
             <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Legal Agreement</span>
             <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Terms of Service</h2>
             <p class="text-slate-400 text-xs mt-2">Effective Date: April 26, 2026 | LAST UPDATED: OCTOBER 20, 2026</p>
         </div>
-        <p>PlantWithMe Bot is provided for Discord community use via Discord's slash command interface, including hosting Forest sessions, managing plant timers, and requests.</p>
+
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs text-slate-300 mb-6">
+            Prefix commands have been removed and automatic host link detection is no longer supported. The Bot may allow authorized users to export and import operational Bot data. Server administrators and moderators should regularly use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code> as a best practice to back up runtime data in case the Bot is updated, restarted, or redeployed.
+        </div>
+
+        <p class="italic text-slate-400">These Terms of Service ("Terms") govern your use of PlantWithMe Bot ("the Bot"). By inviting, accessing, or using the Bot in any Discord server, direct message, or other supported Discord context, you agree to these Terms. If you do not agree to these Terms, do not use the Bot.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">1. Use of the Bot</h3>
+        <p>PlantWithMe Bot is provided for Discord community use via Discord's slash command interface, including hosting Forest sessions, managing plant timers, creating requests and subscriptions, and using related moderation and admin tools. You agree to use the Bot only in a lawful, responsible, and non-abusive manner.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">2. Compliance with Discord Rules</h3>
+        <p>You must comply with Discord’s Terms of Service, Community Guidelines, any applicable server rules in the Discord server where you use the Bot, and any applicable laws and regulations. Use of the Bot in violation of Discord’s rules or applicable law may result in loss of access to the Bot.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">3. Permitted Use</h3>
+        <p>You may use the Bot for its intended purposes via slash commands, including hosting and sharing Forest sessions, managing plant timers, requesting specific trees or durations, subscribing to host notifications, viewing plant stats and leaderboards, and using moderation or admin features where authorized.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">4. Prohibited Conduct</h3>
+        <p>You may not use the Bot to violate any law or regulation, harass or threaten others, spam commands, intentionally disrupt or degrade the Bot’s performance, abuse export/import or moderation tools, attempt unauthorized access to the Bot’s systems or code, distribute malware, or engage in fraudulent activity.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">5. Server Admin and Moderator Responsibility</h3>
+        <p>If you are a server owner, admin, or moderator using elevated features (such as assignment commands, reset commands, subscription management, finished-log modification tools, and data export/import tools), you are fully responsible for how you use them and for storing exported data securely.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">6. Data Export and Import</h3>
+        <p>The Bot may allow authorized users to export and import operational Bot data. Server administrators and moderators should regularly use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code> as a best practice. Exported files may contain Bot-related operational records, and you are responsible for storing and sharing them securely.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">7. Service Availability and Changes</h3>
+        <p>The Bot is provided on an "as is" and "as available" basis. We may update the Bot, change features, add or remove commands, or suspend part or all of the Bot at any time without guarantee of uninterrupted availability.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">8. Third-Party Services</h3>
+        <p>The Bot operates through Discord and processes inputs related to third-party services such as Forest session links or tokens. We are not responsible for Discord outages, API changes, or changes made by third-party services.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">9. Disclaimer of Warranties</h3>
+        <p>The Bot is provided without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, accuracy, reliability, or availability. Use the Bot at your own risk.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">10. Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law, the developer of PlantWithMe Bot will not be liable for any direct, indirect, incidental, special, consequential, or punitive damages (loss of data, missed sessions, service interruptions, import/export mistakes) resulting from use of or inability to use the Bot.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">11. Suspension or Termination</h3>
+        <p>We reserve the right to restrict, suspend, or terminate access to the Bot at any time, with or without notice, for violation of these Terms, abuse, malicious behavior, or security concerns.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">12. Contact Information</h3>
+        <p>Support Server: <a href="https://discord.gg/studywithme" target="_blank" class="text-emerald-400 underline">discord.gg/studywithme</a> (please tag @missattycpa in the help desk)<br>Developer Contact: @missattycpa<br>Support/Donations: <a href="https://ko-fi.com/missattycpa" target="_blank" class="text-emerald-400 underline">ko-fi.com/missattycpa</a></p>
+
+        <!-- Independent Disclaimer Note -->
         <div class="pt-12 border-t border-slate-900 text-center">
             <p class="text-xs text-slate-500">PlantWithMe is an independent, community-built Discord bot and is not officially affiliated with, endorsed by, or connected to the official Forest App team.</p>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 px-6 text-center text-sm text-slate-400">
+        <span class="text-white font-bold">PlantWithMe — The Ultimate Discord Companion for Forest App Users</span>
+    </footer>
 </body>
 </html>

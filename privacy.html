@@ -8,11 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 shrink-0">
-                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Icon" class="w-11 h-11 rounded-xl object-cover">
+                <img src="https://i.postimg.cc/wBYWgTnr/Forest-Session-App-Icon.png" alt="Icon" class="w-11 h-11 rounded-xl object-cover shadow-lg shadow-emerald-900/40">
                 <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">PlantWithMe</span>
             </a>
             <nav class="hidden xl:flex items-center space-x-5 text-sm font-medium text-slate-300">
@@ -24,20 +26,62 @@
                 <a href="changelog.html" class="hover:text-emerald-400 transition">Change Log</a>
                 <a href="contact.html" class="hover:text-emerald-400 transition">Contact Us</a>
             </nav>
-            <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 text-white font-semibold px-3 py-2 rounded-lg text-sm">Add to Discord</a>
+            <div class="flex items-center space-x-3">
+                <a href="https://discord.com/oauth2/authorize?client_id=1387792853236842576" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-lg text-sm transition">Add to Discord</a>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-12 px-6 max-w-4xl mx-auto space-y-6 text-sm text-slate-300 leading-relaxed">
         <div class="border-b border-slate-800 pb-6">
             <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Data Practices & User Privacy</span>
             <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">Privacy Policy</h2>
             <p class="text-slate-400 text-xs mt-2">Effective Date: April 26, 2026 | LAST UPDATED: OCTOBER 20, 2026</p>
         </div>
-        <p>The Bot may process and store Discord user IDs, server IDs, channel IDs, message IDs, role IDs, and user-provided command data.</p>
+
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs text-slate-300 mb-6">
+            Prefix commands have been removed and automatic host link detection is no longer supported. The Bot may allow authorized users to export and import operational Bot data. Server administrators and moderators should regularly use <code class="text-emerald-300">/data export</code> and <code class="text-emerald-300">/data import</code> as a best practice to back up runtime data in case the Bot is updated, restarted, or redeployed.
+        </div>
+
+        <p class="italic text-slate-400">PlantWithMe Bot ("the Bot") respects user privacy and aims to collect and retain only the information needed to provide its features inside Discord. This Privacy Policy explains what information the Bot processes, why it is processed, how long it may be retained, and what rights users and server administrators have.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">1. Information the Bot Processes</h3>
+        <p>The Bot may process and store the following categories of information when used in Discord:</p>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Discord IDs and Server Context:</strong> Discord user IDs, server IDs, channel IDs, message IDs, and role IDs where applicable for server-specific ping behavior.</li>
+            <li><strong>User-Provided Command Data:</strong> Selected tree names, timer durations, elapsed time or start timing data, plant requests, subscription relationships, assigned plant images, optional host remarks, optional image URLs, and user-provided dates for moderator-added or modified stats entries.</li>
+            <li><strong>Forest Session Data:</strong> Room code, join link token or link, tree name, session duration, and host timing information.</li>
+            <li><strong>Finished Session History:</strong> User ID, server ID, tree name, duration, and completed timestamp used for stats and leaderboards.</li>
+        </ul>
+
+        <h3 class="text-lg font-bold text-white pt-2">2. How the Information Is Used</h3>
+        <p>The Bot uses this information only to operate its Discord features, including creating and managing plant timers, generating host-session embeds, sending subscription and request pings, tracking finished plant sessions, showing stats and leaderboards, and exporting and importing Bot data. The Bot does not use this information for advertising or profiling.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">3. Data Storage and Retention</h3>
+        <p>Unlike a purely ephemeral bot, PlantWithMe Bot uses persistent storage for operational Bot data (active plant timers, tree requests, subscription records, completed session history, saved plant image preferences, and host-session metadata). Data remains stored until manually removed, overwritten by imported backups, or cleared by the Bot's reset logic.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">4. Data Export, Import, and Sharing</h3>
+        <p>Server administrators may use Bot data-management commands to export and import Bot data. The Bot does not sell user data and does not intentionally share stored Bot data with third parties for commercial purposes, though hosting providers technically process data as part of normal infrastructure operation.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">5. User Choices and Rights</h3>
+        <p>Users may request that certain stored data be corrected or removed where applicable (such as removing a subscription, removing a plant request, or requesting correction/deletion of a manually assigned finished-session log) by contacting server staff or the developer.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">6. Security</h3>
+        <p>Reasonable efforts are made to limit stored data to operational Bot needs. However, no method of electronic storage or transmission is completely secure, and server administrators should handle exported Bot data files carefully.</p>
+
+        <h3 class="text-lg font-bold text-white pt-2">7. Contact Information</h3>
+        <p>Support Server: <a href="https://discord.gg/studywithme" target="_blank" class="text-emerald-400 underline">discord.gg/studywithme</a> (please tag @missattycpa in the help desk)<br>Developer Contact: @missattycpa<br>Support/Donations: <a href="https://ko-fi.com/missattycpa" target="_blank" class="text-emerald-400 underline">ko-fi.com/missattycpa</a></p>
+
+        <!-- Independent Disclaimer Note -->
         <div class="pt-12 border-t border-slate-900 text-center">
             <p class="text-xs text-slate-500">PlantWithMe is an independent, community-built Discord bot and is not officially affiliated with, endorsed by, or connected to the official Forest App team.</p>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 px-6 text-center text-sm text-slate-400">
+        <span class="text-white font-bold">PlantWithMe — The Ultimate Discord Companion for Forest App Users</span>
+    </footer>
 </body>
 </html>
